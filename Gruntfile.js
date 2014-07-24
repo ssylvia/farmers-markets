@@ -8,16 +8,6 @@ module.exports = function(grunt) {
 
         pkg: grunt.file.readJSON('package.json'),
 
-        concat: {
-            options: {
-                seperator: ';'
-            },
-            devJS: {
-                src: ['src/app/javascript/*.js','!src/app/javascript/app.js'],
-                dest: 'src/app/javascript/app.js'
-            }
-        },
-
         connect: {
             dev: {
                 options: {
@@ -27,7 +17,45 @@ module.exports = function(grunt) {
         },
 
         clean: {
-            deploy: ['delpoy/']
+            deploy: ['deploy/'],
+        },
+
+        copy: {
+            require: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['app/javascript/require/require.js'],
+                    dest: 'deploy/'
+                }]
+            }
+        },
+
+        jshint: {
+            files: ['src/app/javascript/**/*.js','!src/app/javascript/require/require.js'],
+            options: {jshintrc: '.jshintrc'}
+        },
+
+        processhtml: {
+            deploy: {
+                files: {
+                    'deploy/index.html': ['src/index.html']
+                }
+            }
+        },
+
+        requirejs: {
+            app: {
+                options: {
+                    baseUrl: 'src/',
+                    paths: {
+                      'app': 'app/javascript',
+                      'lib': 'bower_components'
+                    },
+                    name: 'app/require/buildConfig/core',
+                    out: 'deploy/app/javascript/app.min.js'
+                }
+            }
         },
 
         stylus: {
@@ -35,7 +63,7 @@ module.exports = function(grunt) {
                 options: {
                     compress: false,
                     linenos: true,
-                    paths: ['src/app/stylesheets'],
+                    paths: ['src/app/stylesheets','src/bower_components/'],
                     use: [
                         require('nib')
                     ],
@@ -43,6 +71,20 @@ module.exports = function(grunt) {
                 },
                 files: {
                   'src/app/stylesheets/app.css': 'src/app/stylesheets/app.styl'
+                }
+            },
+            build: {
+                options: {
+                    compress: true,
+                    linenos: true,
+                    paths: ['src/app/stylesheets','src/bower_components/'],
+                    use: [
+                        require('nib')
+                    ],
+                    'include css': true
+                },
+                files: {
+                  'deploy/app/stylesheets/app.min.css': 'src/app/stylesheets/app.styl'
                 }
             }
         },
@@ -52,28 +94,39 @@ module.exports = function(grunt) {
                 livereload: true
             },
             stylus: {
-                files: {
-                    files: ['src/app/stylesheets/**/*.styl'],
-                    tasks: ['stylus:dev']
-                }
+                files: ['src/app/stylesheets/**/*.styl'],
+                tasks: ['stylus:dev']
             },
             concat: {
-                files: {
-                    files: ['src/app/javascript/**/*.js','!src/app/javascript/app.js'],
-                    tasks: ['concat:devJS']
-                }
+                files: ['src/app/javascript/**/*.js','!src/app/javascript/require/require.js'],
+                tasks: ['jshint']
+            },
+            html: {
+                files: ['src/*.html']
             }
         }
 
     });
 
     // Default task(s)
-    
+
     grunt.registerTask('default', [
-        'concat:devJS',
+        'jshint',
         'stylus:dev',
         'connect:dev',
         'watch'
+    ]);
+
+    grunt.registerTask('build', [
+        'clean:deploy',
+        'jshint',
+        'processhtml',
+        'copy:require',
+        'stylus:build',
+        'requirejs',
+        // 'concat:oldIE',
+        // 'clean:buildTools',
+        // 'copy:deploy'
     ]);
 
 };

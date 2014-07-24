@@ -13,40 +13,22 @@
 	    <meta name="author" content="Esri">
 
 	    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-	    <!-- build:css:deploy app/stylesheets/app.min.css -->
-	    <link href="app/stylesheets/app.css" media="screen" rel="stylesheet" type="text/css">
-		<!-- /build -->
+	    <link rel="stylesheet" href="app/stylesheets/app.min.css">
 	</head>
 	<body>
 
 		<div id="map"></div>
-		<!-- build:remove:deploy -->
-		<script src="//localhost:35729/livereload.js"></script>
-		<!-- /build -->
 
 		<script src="app/javascript/require/require.js"></script>
-		<!-- build:remove:deploy -->
 		<script>
-			require.config({
-        paths: {
-          'app': 'app/javascript',
-          'lib': 'bower_components'
-        }
-			});
-			require(['app/core/Core']);
+		require.config({
+		paths: {
+		'app': 'app/javascript',
+		'lib': 'bower_components'
+		}
+		});
+		require(["app/javascript/app.min.js"]);
 		</script>
-		<!-- /build -->
-		<!-- build:template:deploy
-		<script>
-			require.config({
-				paths: {
-          'app': 'app/javascript',
-          'lib': 'bower_components'
-        }
-			});
-			require(["app/javascript/app.min.js"]);
-		</script>
-		/build -->
 
 		<!-- Leaflet -->
 		<!-- <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>

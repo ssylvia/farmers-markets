@@ -13,5 +13,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "leaflet": "~0.7.3",
+    "esri-leaflet": "~0.0.1-beta.4-patch-1"
+  }
 }
