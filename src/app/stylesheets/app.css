@@ -1,0 +1,111 @@
+
+/* line 3 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/app.styl */
+
+/* line 1 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
+
+/* line 287 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
+
+/* line 3 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+
+/* line 11 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 14 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+body {
+  line-height: 1;
+  color: #000;
+  background: #fff;
+}
+
+/* line 16 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+ol,
+ul {
+  list-style: none;
+}
+
+/* line 18 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 20 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 22 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/nib/lib/nib/reset.styl */
+a img {
+  border: none;
+}

@@ -1,0 +1,26 @@
+{
+  "name": "farmers-markets",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ssylvia/farmers-markets.git"
+  },
+  "author": "Esri",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/ssylvia/farmers-markets/issues"
+  },
+  "homepage": "https://storymaps.esri.com/stories/2014/farmers-markets",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "matchdep": "^0.3.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-connect": "^0.8.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-stylus": "^0.18.0",
+    "nib": "^1.0.3"
+  }
+}
