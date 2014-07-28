@@ -28,7 +28,16 @@ module.exports = function(grunt) {
                     src: ['app/javascript/require/require.js'],
                     dest: 'deploy/'
                 }]
-            }
+            },
+            deploy: {
+              files: [{
+              expand: true,
+              flatten: true,
+              cwd: 'data/',
+              src: ['sftp-config.json'],
+              dest: 'deploy/'
+            }]
+          }
         },
 
         jshint: {
@@ -125,9 +134,7 @@ module.exports = function(grunt) {
         'copy:require',
         'stylus:build',
         'requirejs',
-        // 'concat:oldIE',
-        // 'clean:buildTools',
-        // 'copy:deploy'
+        'copy:deploy'
     ]);
 
 };
