@@ -50,7 +50,8 @@ module.exports = function(grunt) {
                     baseUrl: 'src/',
                     paths: {
                       'app': 'app/javascript',
-                      'lib': 'bower_components'
+                      'lib': 'bower_components',
+                      'jquery': 'bower_components/jquery/dist/jquery'
                     },
                     name: 'app/require/buildConfig/core',
                     out: 'deploy/app/javascript/app.min.js'
