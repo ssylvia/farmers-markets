@@ -26,6 +26,14 @@
 		'app': 'app/javascript',
 		'lib': 'bower_components',
 		'jquery': 'bower_components/jquery/dist/jquery'
+		},
+		shim: {
+		'lib/leaflet/dist/leaflet': {
+		exports: 'L'
+		},
+		'lib/esri-leaflet/dist/esri-leaflet': {
+		deps: ['lib/leaflet/dist/leaflet']
+		}
 		}
 		});
 		require(["app/javascript/app.min.js"]);

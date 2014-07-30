@@ -9,15 +9,22 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
   return function(){
 
     var self = this,
+    prevIndex = 0,
     currentIndex = 0;
 
     this.slides = [];
+    _animationTime = Data.defaults.animationTime;
+
+    this.getPrevIndex  = function(){
+      return prevIndex;
+    };
 
     this.getCurrentIndex  = function(){
       return currentIndex;
     };
 
     this.setCurrentIndex  = function(index){
+      prevIndex = currentIndex;
       currentIndex = index;
     };
 
@@ -89,7 +96,7 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     if (self.getCurrentIndex() !== self.slides.length){
       var newIndex = self.getCurrentIndex() + 1;
       self.setCurrentIndex(newIndex);
-      scrollToPosition(newIndex);
+      scrollToPosition(self,newIndex);
     }
   }
 
@@ -97,13 +104,14 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     if (self.getCurrentIndex() !== 0){
       var newIndex = self.getCurrentIndex() - 1;
       self.setCurrentIndex(newIndex);
-      scrollToPosition(newIndex);
+      scrollToPosition(self,newIndex);
     }
   }
 
-  function scrollToPosition(index,fromResize){
+  function scrollToPosition(self,index,fromResize){
     var delay = fromResize ? 0 : _animationTime;
     _changeReady = false;
+    onChangeStart(self);
     $('html, body').animate({'scrollTop':($(this).height() * index)},{
       duration: delay,
       complete: function(){
@@ -129,7 +137,15 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
 
     });
 
-    scrollToPosition(self.getCurrentIndex(),fromResize);
+    scrollToPosition(self,self.getCurrentIndex(),fromResize);
+  }
+
+  function onChangeStart(self){
+    var eventObj = {
+      prevIndex: self.getPrevIndex(),
+      currentIndex: self.getCurrentIndex()
+    };
+    $(self).trigger('changeStart',eventObj);
   }
 
 });

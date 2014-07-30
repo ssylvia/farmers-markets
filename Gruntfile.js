@@ -29,6 +29,23 @@ module.exports = function(grunt) {
                     dest: 'deploy/'
                 }]
             },
+            resources: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/',
+                    src: ['resources/**'],
+                    dest: 'deploy/'
+                }]
+            },
+            leafletIcons: {
+                files: [{
+                    expand: true,
+                    flatten: true,
+                    cwd: 'src/',
+                    src: ['bower_components/leaflet/dist/images/**'],
+                    dest: 'src/resources/images/mapIcons/'
+                }]
+            },
             deploy: {
               files: [{
               expand: true,
@@ -61,6 +78,14 @@ module.exports = function(grunt) {
                       'app': 'app/javascript',
                       'lib': 'bower_components',
                       'jquery': 'bower_components/jquery/dist/jquery'
+                    },
+                    shim: {
+                      'lib/leaflet/dist/leaflet': {
+                        exports: 'L'
+                      },
+                      'lib/esri-leaflet/dist/esri-leaflet': {
+                        deps: ['lib/leaflet/dist/leaflet']
+                      }
                     },
                     name: 'app/require/buildConfig/core',
                     out: 'deploy/app/javascript/app.min.js'
@@ -122,6 +147,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
         'jshint',
+        'copy:leafletIcons',
         'stylus:dev',
         'connect:dev',
         'watch'
@@ -132,6 +158,7 @@ module.exports = function(grunt) {
         'jshint',
         'processhtml',
         'copy:require',
+        'copy:resources',
         'stylus:build',
         'requirejs',
         'copy:deploy'

@@ -16,8 +16,9 @@
   ],
   "dependencies": {
     "leaflet": "~0.7.3",
-    "esri-leaflet": "~0.0.1-beta.4-patch-1",
     "jquery": "~2.1.1",
-    "jquery-mousewheel": "~3.1.12"
+    "jquery-mousewheel": "~3.1.12",
+    "Leaflet.heat": "https://github.com/Leaflet/Leaflet.heat.git#gh-pages",
+    "esri-leaflet": "https://github.com/Esri/esri-leaflet.git#v0.0.1-beta.5"
   }
 }

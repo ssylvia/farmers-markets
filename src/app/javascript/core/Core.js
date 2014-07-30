@@ -16,17 +16,24 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
 
     // Add basemap layers to map
     $.each(Data.mapConfig.basemapLayers,function(){
-      _map.addLayer(this);
+      _map.createLayers(this);
     });
 
     //Add operational layers to map
     $.each(Data.mapConfig.operationalLayers,function(){
-      _map.addLayer(this);
+      _map.createLayers(this);
     });
+
+    _map.changeLayers(0);
   }
 
   function createSlides(){
     _slides = new Slides();
+    $(_slides).on('changeStart',changeStart);
+  }
+
+  function changeStart(event,changeItems){
+    _map.changeLayers(changeItems.currentIndex);
   }
 
   createMap();
