@@ -56,7 +56,7 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
 
     this.changeLayers = function(index){
 
-      if (index < Data.slides.length){
+      if (index < Data.slides.length && Data.slides[index].layers && Data.slides[index].layers.basemaps){
         var slideLayers = Data.slides[index].layers.basemaps.concat(Data.slides[index].layers.operational);
 
         currentLayers = [];
@@ -76,6 +76,8 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
           }
         }
       }
+
+      $('a[style]:eq(0)').show();
 
     };
 
@@ -107,6 +109,7 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
       else if (map.hasLayer(this) && !checkScaleDependency(map,this)){
         map.removeLayer(this);
       }
+      $('a[style]:eq(0)').show();
     });
   }
 

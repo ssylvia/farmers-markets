@@ -30,12 +30,16 @@ define([],function(){
         popupTemplate: '<h3>{marketname}</h3>',
         scaleDependent: {
           minZoom: 8,
-          maxZoom: 10,
         }
       }]
     },
 
     slides: [{
+      mainTitle: true,
+      title: 'Lorem ipsum dolor sit amet, consectetur.',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente omnis obcaecati placeat quam adipisci esse asperiores, dolore quidem maxime alias, magnam doloremque nam quasi architecto aliquam ea aut commodi corporis eligendi. Similique perspiciatis nesciunt quasi eos maiores quae. At, voluptatibus.',
+      backgroundImage: 'resources/images/slideContent/backgrounds/market.jpeg'
+    },{
       title: 'Farmer\'s Markets are exploding!',
       content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente omnis obcaecati placeat quam adipisci esse asperiores, dolore quidem maxime alias, magnam doloremque nam quasi architecto aliquam ea aut commodi corporis eligendi. Similique perspiciatis nesciunt quasi eos maiores quae. At, voluptatibus.',
       layers: {

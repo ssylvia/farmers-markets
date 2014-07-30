@@ -98,7 +98,7 @@ module.exports = function(grunt) {
                 options: {
                     compress: false,
                     linenos: true,
-                    paths: ['src/app/stylesheets','src/bower_components/'],
+                    paths: ['src/app/stylesheets','src/bower_components/','src/resources/fonts'],
                     use: [
                         require('nib')
                     ],
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
                 options: {
                     compress: true,
                     linenos: true,
-                    paths: ['src/app/stylesheets','src/bower_components/'],
+                    paths: ['src/app/stylesheets','src/bower_components/','src/resources/fonts'],
                     use: [
                         require('nib')
                     ],
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             stylus: {
-                files: ['src/app/stylesheets/**/*.styl'],
+                files: ['src/app/stylesheets/**/*.styl','src/resources/fonts/**/*.css'],
                 tasks: ['stylus:dev']
             },
             concat: {
