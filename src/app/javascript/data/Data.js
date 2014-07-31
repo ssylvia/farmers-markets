@@ -37,7 +37,7 @@ define([],function(){
       },{
         name: 'FarmersMarketsTiles',
         type: 'esriTileLayer',
-        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/markets/MapServer',
+        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/markets_v1/MapServer/',
         scaleDependent: {
           minZoom: 2,
           maxZoom: 7
@@ -47,32 +47,48 @@ define([],function(){
 
     slides: [{
       mainTitle: true,
-      title: 'Lorem ipsum dolor sit amet, consectetur.',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente omnis obcaecati placeat quam adipisci esse asperiores, dolore quidem maxime alias, magnam doloremque nam quasi architecto aliquam ea aut commodi corporis eligendi. Similique perspiciatis nesciunt quasi eos maiores quae. At, voluptatibus.',
+      title: 'Farmer\'s Markets: Americans continue to discover and celebrate fresh, locally-grown foods.',
+      content: 'Farmer\'s markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmer\'s market phenomenon and discover markets in your community.',
       backgroundImage: 'resources/images/slideContent/backgrounds/market.jpeg'
     },{
-      title: 'Farmer\'s Markets are exploding!',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente omnis obcaecati placeat quam adipisci esse asperiores, dolore quidem maxime alias, magnam doloremque nam quasi architecto aliquam ea aut commodi corporis eligendi. Similique perspiciatis nesciunt quasi eos maiores quae. At, voluptatibus.',
+      title: 'A bumper crop of farmer\'s markets',
+      content: 'The National Farmer\'s Market Directory lists more than 8,000 markets, an increase of 76 percent since 1978. California hosts the most farmer’s markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       },
-      task: {
-        mapTasks: {
-          type: 'geocodeAddress',
-          delay: 3000
-        }
+      tasks: {
+        mapTasks: [{
+          type: 'centerAndZoom',
+          data: {
+            center: [37.64, -97.11],
+            zoom: 5
+          }
+        }]
       }
     },{
-      title: 'Lorem ipsum dolor.',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis voluptatem, itaque, omnis, mollitia, tempore explicabo fugiat cumque fuga voluptates expedita obcaecati. Molestiae ab sequi commodi consequuntur harum labore recusandae doloremque laboriosam quibusdam et quod reiciendis odit nostrum officiis sunt hic odio quo, quam amet accusamus, modi possimus molestias nisi! Fugiat cupiditate blanditiis obcaecati, dolorum aliquid!',
+      layers: {
+        basemaps: ['Gray','GrayLabels'],
+        operational: ['FarmersMarketsTiles','FarmersMarkets']
+      },
+      tasks: {
+        mapTasks: [{
+          type: 'showItem',
+          data: {
+            selector: '#geocoder-wrapper'
+          }
+        }]
+      }
+    },{
+      title: 'Access by car to farmer\'s markets',
+      content: 'The shaded areas are within a fifteen-minute drive of a farmer\'s market. Is your home convenient to a market?',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       }
     },{
-      title: 'Lorem ipsum dolor sit amet.',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quos ad adipisci blanditiis, quod nam tempore quo placeat possimus repellendus.',
+      title: 'Walking to farmer\'s markets',
+      content: 'The shaded areas are within a ten-minute walk of a farmer\'s market. Access to markets may be more difficult for residents of less affluent neighborhoods.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']

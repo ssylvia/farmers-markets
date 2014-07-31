@@ -87,6 +87,41 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
 
     };
 
+    this.runMapTasks = function(index){
+      if (index < Data.slides.length && Data.slides[index].tasks && Data.slides[index].tasks.mapTasks){
+        $.each(Data.slides[index].tasks.mapTasks,function(){
+          var self = this;
+          switch (this.type){
+            case 'centerAndZoom':
+                map.setView(self.data.center,self.data.zoom);
+              break;
+            case 'showItem':
+                $(self.data.selector).fadeIn();
+              break;
+
+          }
+        });
+      }
+    };
+
+    this.geocodeAddress = function(input){
+      var self = this,
+      geocoder = new L.esri.Services.Geocoding();
+
+      $(self).trigger('geocodeAddressStart');
+
+      geocoder.geocode(input.val(), {}, function (error, results) {
+        if(!error && results.length > 0 && settings.mapOptions.maxBounds.contains(results[0].bounds)){
+          map.fitBounds(results[0].bounds);
+          $(self).trigger('geocodeAddressEnd',true);
+        }
+        else{
+          input.val('Search for a valid location in the United States');
+          $(self).trigger('geocodeAddressEnd',false);
+        }
+      });
+    };
+
   };
 
   function checkScaleDependency(map,layer){

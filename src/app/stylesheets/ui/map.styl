@@ -1,3 +1,41 @@
+#geocoder-wrapper
+  position fixed
+  display none
+  top 30%
+  left: 50%
+  margin-left -330px
+  border-radius 25px
+  overflow hidden
+  z-index: 100
+
+  .geocoder-form
+    position relative
+    padding 25px
+    z-index 1
+
+    input
+      width 600px
+      margin-top 15px
+      border-radius 5px
+      border none
+      padding 5px
+
+  .background
+    position absolute
+    top 0
+    width 100%
+    height 100%
+    background-color white
+    opacity 0.7
+
+  #search-button
+    background-color $mapMatch
+    color $secondaryAccent
+    padding 5px
+    border-radius 5px
+    display inline-block
+    cursor pointer
+
 #map
   position fixed
   height 100%

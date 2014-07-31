@@ -4,7 +4,8 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
   _animationTime = 500,
   _changeReady = true,
   _scollReady = true,
-  _scrollDelay;
+  _scrollDelay,
+  _fireChangeEnd;
 
   return function(){
 
@@ -28,6 +29,9 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
       currentIndex = index;
     };
 
+    this.goToNext = function(){
+      nextSlide(self);
+    };
 
     $.each(Data.slides,function(i){
       buildSlideHtml(self,this,i);
@@ -50,12 +54,13 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
       clearTimeout(_scrollDelay);
       _scrollDelay = setTimeout(function(){
         _scollReady = true;
-      },50);
+      },300);
       _scollReady = false;
     });
 
     $(window).on('keydown',function(event){
-      switch(event.which){
+      var code = event.keyCode || event.which;
+      switch(code){
         case 37:
           prevSlide(self);
           break;
@@ -170,10 +175,11 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
       scrollPosition = ($(this).height() * index);
       $('.next-arrow').fadeIn(_animationTime);
     }
-    $('html, body').animate({'scrollTop':scrollPosition},{
+    $('html,body').animate({'scrollTop':scrollPosition},{
       duration: delay,
       complete: function(){
         _changeReady = true;
+        onChangeEnd(self);
       }
     });
   }
@@ -212,11 +218,23 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
   }
 
   function onChangeStart(self){
+    _fireChangeEnd = true;
     var eventObj = {
       prevIndex: self.getPrevIndex(),
       currentIndex: self.getCurrentIndex()
     };
     $(self).trigger('changeStart',eventObj);
+  }
+
+  function onChangeEnd(self){
+    if (_fireChangeEnd){
+      _fireChangeEnd = false;
+      var eventObj = {
+        prevIndex: self.getPrevIndex(),
+        currentIndex: self.getCurrentIndex()
+      };
+      $(self).trigger('changeEnd',eventObj);
+    }
   }
 
 });

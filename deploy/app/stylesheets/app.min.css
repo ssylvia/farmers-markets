@@ -1,5 +1,5 @@
 
-/* line 17 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/app.styl */
+/* line 18 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/app.styl */
 
 /* line 1 : /Users/step6692/development/github/farmers-markets/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
 
@@ -506,13 +506,100 @@ html{overflow:hidden}
 	}
 
 /* line 3 : /Users/step6692/development/github/farmers-markets/src/bower_components/leaflet/dist/leaflet.css */
+/*
+   Animation example, for spinners
+*/
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* line 3 : /Users/step6692/development/github/farmers-markets/src/resources/fonts/fontello/css/animation.css */
 @font-face {
   font-family: 'fontello';
-  src: url('../../resources/fonts/fontello/font/fontello.eot?97442986');
-  src: url('../../resources/fonts/fontello/font/fontello.eot?97442986#iefix') format('embedded-opentype'),
-       url('../../resources/fonts/fontello/font/fontello.woff?97442986') format('woff'),
-       url('../../resources/fonts/fontello/font/fontello.ttf?97442986') format('truetype'),
-       url('../../resources/fonts/fontello/font/fontello.svg?97442986#fontello') format('svg');
+  src: url('../../resources/fonts/fontello/font/fontello.eot?11945057');
+  src: url('../../resources/fonts/fontello/font/fontello.eot?11945057#iefix') format('embedded-opentype'),
+       url('../../resources/fonts/fontello/font/fontello.woff?11945057') format('woff'),
+       url('../../resources/fonts/fontello/font/fontello.ttf?11945057') format('truetype'),
+       url('../../resources/fonts/fontello/font/fontello.svg?11945057#fontello') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -522,7 +609,7 @@ html{overflow:hidden}
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fontello';
-    src: url('../font/fontello.svg?97442986#fontello') format('svg');
+    src: url('../../resources/fonts/fontello/font/fontello.svg?11945057#fontello') format('svg');
   }
 }
 */
@@ -563,50 +650,70 @@ html{overflow:hidden}
 .icon-angle-down:before { content: '\e802'; } /* '' */
 .icon-share:before { content: '\e803'; } /* '' */
 .icon-angle-up:before { content: '\e804'; } /* '' */
+.icon-spin:before { content: '\e805'; } /* '' */
+.icon-search:before { content: '\e806'; } /* '' */
 
 /* line 3 : /Users/step6692/development/github/farmers-markets/src/resources/fonts/fontello/css/fontello.css */
 
 /* line 1 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/colors.styl */
 
-/* line 2 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/colors.styl */
+/* line 3 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/colors.styl */
 
-/* line 2 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
+/* line 3 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
 
 /* line 1 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
-h1,h2,h3,h4,h5,h6,div,a,p,li{font-family:"open-sans",sans-serif;font-weight:lighter}
+h1,h2,h3,h4,h5,h6,div,a,p,li,input{font-family:"open-sans",sans-serif;font-weight:lighter}
 /* line 5 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
 h1{font-size:4em;color:#bde455;line-height:1.1em;text-align:center}
 /* line 11 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
 h2{font-size:3em;line-height:1.2em;text-align:center}
 /* line 16 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
-div{font-size:1.1em;line-height:1.3em}
+h4{font-size:1.4em}
 /* line 19 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
+input,#search-button{font-size:1.6em}
+/* line 22 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
+div{font-size:1.1em;line-height:1.3em}
+/* line 25 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
 
-/* line 19 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 25 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 
 /* line 1 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#geocoder-wrapper{position:fixed;display:none;top:30%;left:50%;margin-left:-330px;border-radius:25px;overflow:hidden;z-index:100;}
+/* line 11 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#geocoder-wrapper .geocoder-form{position:relative;padding:25px;z-index:1;}
+/* line 16 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#geocoder-wrapper .geocoder-form input{width:600px;margin-top:15px;border-radius:5px;border:none;padding:5px}
+/* line 23 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#geocoder-wrapper .background{position:absolute;top:0;width:100%;height:100%;background-color:#fff;opacity:.7}
+/* line 31 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#geocoder-wrapper #search-button{background-color:#46a66b;color:#fff;padding:5px;border-radius:5px;display:inline-block;cursor:pointer}
+/* line 39 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 #map{position:fixed;height:100%;width:100%;top:0}
-/* line 7 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 45 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 a[style]{display:none}
-/* line 9 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 47 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 
-/* line 9 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 47 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 
 /* line 1 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-title-wrapper{position:absolute;max-width:90%;border-bottom-right-radius:25px;border-bottom-left-radius:25px;overflow:hidden;z-index:10}
 /* line 9 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
-.slide-content-wrapper{position:absolute;width:20%;min-width:400px;border-top-right-radius:25px;overflow:hidden;z-index:10}
-/* line 17 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
-
+.slide-content-wrapper{position:absolute;width:20%;left:25px;margin-bottom:25px;min-width:400px;border-radius:25px;overflow:hidden;z-index:10}
 /* line 19 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
-.slide-title-wrapper .slide-main-title,.slide-content-wrapper .slide-main-title,.slide-title-wrapper .slide-title,.slide-content-wrapper .slide-title,.slide-title-wrapper .slide-content,.slide-content-wrapper .slide-content{position:relative;padding:25px;z-index:1}
-/* line 24 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
-.slide-title-wrapper .background,.slide-content-wrapper .background{position:absolute;top:0;width:100%;height:100%;background-color:#fff;opacity:.5}
-/* line 32 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+
+/* line 21 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-title-wrapper .slide-title,.slide-content-wrapper .slide-title,.slide-title-wrapper .slide-content,.slide-content-wrapper .slide-content{position:relative;padding:25px;z-index:1}
+/* line 26 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-title-wrapper .background,.slide-content-wrapper .background{position:absolute;top:0;width:100%;height:100%;background-color:#fff;opacity:.7}
+/* line 34 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+
+/* line 35 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-title-wrapper .background{background-color:#bde455}
+/* line 38 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-main-content-wrapper{margin-bottom:117px;color:#fff;text-align:center;width:80%}
-/* line 39 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 45 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-footer{position:absolute;width:100%;padding:4em 0;background:#000;z-index:100}
-/* line 46 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 52 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-background-image{position:absolute;width:100%;height:100%;background-color:#fff;background-size:cover;background-repeat:no-repeat;background-position:center;z-index:5}
-/* line 56 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 62 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .next-arrow{position:fixed;color:#bde455;bottom:0;left:50%;margin-left:-79px;font-size:113px;line-height:1;z-index:11;text-shadow:0 0 10px #000;cursor:pointer}
