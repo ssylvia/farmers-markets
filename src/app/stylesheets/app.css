@@ -738,15 +738,14 @@ a[style] {
   position: absolute;
   width: 20%;
   min-width: 400px;
-  text-align: center;
   border-top-right-radius: 25px;
   overflow: hidden;
   z-index: 10;
 }
 
-/* line 18 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 17 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 
-/* line 20 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 19 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-title-wrapper .slide-main-title,
 .slide-content-wrapper .slide-main-title,
 .slide-title-wrapper .slide-title,
@@ -758,7 +757,7 @@ a[style] {
   z-index: 1;
 }
 
-/* line 25 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 24 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-title-wrapper .background,
 .slide-content-wrapper .background {
   position: absolute;
@@ -769,10 +768,11 @@ a[style] {
   opacity: 0.5;
 }
 
-/* line 33 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 32 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-main-content-wrapper {
   margin-bottom: 117px;
   color: #fff;
+  text-align: center;
   width: 80%;
 }
 
@@ -782,7 +782,7 @@ a[style] {
   width: 100%;
   padding: 4em 0;
   background: #000;
-  z-index: 10;
+  z-index: 100;
 }
 
 /* line 46 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */

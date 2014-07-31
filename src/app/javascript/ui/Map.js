@@ -1,4 +1,4 @@
-define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/dist/esri-leaflet'],function($,Data,L){
+define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/dist/esri-leaflet','lib/esri-leaflet-geocoder/dist/esri-leaflet-geocoder'],function($,Data,L){
 
   return function(div,options){
 
@@ -31,13 +31,16 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
     });
 
     this.createLayers = function(layerObj,firstLoad){
-      var layer;
+      var layer,
+      addLayer = true;
       switch (layerObj.type){
         case 'esriBasemap':
           layer = L.esri.basemapLayer(layerObj.name,{
             detectRetina: layerObj.displayRetina
           });
-          window.bm = layer;
+          break;
+        case 'esriTileLayer':
+          layer = L.esri.tiledMapLayer(layerObj.url);
           break;
         case 'esriFeatureLayer':
           layer = L.esri.featureLayer(layerObj.url,layerObj.layerOptions);
@@ -48,10 +51,13 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
           }
           break;
         default:
-          console.log('Layer not currently supported');
+          addLayer = false;
+          console.log('Error: ' + layerObj.name + ' is not a supported layer type.');
       }
-      layer.scaleDependent = layerObj.scaleDependent;
-      layers[layerObj.name] = layer;
+      if (addLayer){
+        layer.scaleDependent = layerObj.scaleDependent;
+        layers[layerObj.name] = layer;
+      }
     };
 
     this.changeLayers = function(index){

@@ -104,18 +104,19 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     else{
       $('.slide-item').last().after(slideTitle);
       $('.slide-item').last().after(slideContent);
+
+      if ($('.next-arrow').length < 1){
+        var nextButton = $('<div class="next-arrow icon-angle-down"></div>');
+        $('#map').after(nextButton);
+
+        nextButton.click(function(){
+          nextSlide(self);
+        });
+      }
     }
     if (slide.backgroundImage){
       slideBackgroundImage = $('<div class="slide-background-image slide-item" style="background-image:url(' + slide.backgroundImage + ');"></div>');
       $('.slide-item').last().after(slideBackgroundImage);
-    }
-    if ($('.next-arrow').length < 1){
-      var nextButton = $('<div class="next-arrow icon-angle-down"></div>');
-      $('#map').after(nextButton);
-
-      nextButton.click(function(){
-        nextSlide(self);
-      });
     }
     var slideObj = {
       slide: slide,
