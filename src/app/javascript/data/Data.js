@@ -1,4 +1,4 @@
-define([],function(){
+define(['lib/leaflet/dist/leaflet'],function(){
 
   var _data = {
 
@@ -33,6 +33,21 @@ define([],function(){
         scaleDependent: {
           minZoom: 8,
         },
+        layerOptions: {
+          pointToLayer: function(feature,latlng){
+            return L.marker(latlng, {
+              alt: feature.properties.marketname,
+              riseOnHover: true,
+              icon: L.icon({
+                iconUrl: 'resources/images/mapIcons/farmers-markets.png',
+                iconRetinaUrl: 'resources/images/mapIcons/farmers-markets-2x.png',
+                iconSize: [33, 60],
+                iconAnchor: [16, 54],
+                popupAnchor: [0, -45],
+              })
+            });
+          }
+        }
       },{
         name: 'FarmersMarketsTiles',
         type: 'esriTileLayer',
