@@ -787,7 +787,8 @@ h2 {
 }
 
 /* line 16 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/config/fonts.styl */
-h3 {
+h3,
+h5 {
   font-size: 1.2em;
   font-weight: normal !important;
 }
@@ -948,13 +949,56 @@ a[style] {
 .slide-footer {
   position: absolute;
   width: 100%;
-  padding: 4em 0;
   background: #46a66b;
   color: #fff;
   z-index: 100;
 }
 
-/* line 53 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 52 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-footer .footer-content {
+  padding: 25px;
+}
+
+/* line 55 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-footer .footer-content a {
+  color: #000;
+}
+
+/* line 58 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-footer .related-stories {
+  padding: 25px;
+  text-align: center;
+}
+
+/* line 62 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-footer .story-wrapper {
+  margin-top: 25px;
+  display: inline-block;
+  width: 254px;
+  padding: 12px;
+  text-decoration: none;
+}
+
+/* line 70 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-footer .story-thumbnail {
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  border: 3px solid #fff;
+  border-radius: 90px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* line 81 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+.slide-footer .story-title {
+  font-size: 0.8em;
+  color: #fff;
+}
+
+/* line 85 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-background-image {
   position: absolute;
   width: 100%;
@@ -966,7 +1010,7 @@ a[style] {
   z-index: 5;
 }
 
-/* line 63 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 95 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .next-arrow {
   position: fixed;
   color: #bde455;

@@ -36,7 +36,7 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     $.each(Data.slides,function(i){
       buildSlideHtml(self,this,i);
     });
-    createFooterSlide(self);
+    createFooterSlide(self,Data.footer);
     setSlidesLayout(self);
 
     $(window).on('mousewheel',function(event,delta){
@@ -133,8 +133,25 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     self.slides.push(slideObj);
   }
 
-  function createFooterSlide(self){
-    var footer = $('<div class="slide-footer slide-item"></div>');
+  function createFooterSlide(self,slide){
+    var related = '';
+    if (slide.relatedStories){
+      related = '<div class="related-stories">\
+        <h5>More Stories</h5>\
+          <div class="related-wrapper">';
+
+      $.each(slide.relatedStories,function(){
+        related = related + '<a class="story-wrapper" href="' + this.url + '" target="_blank">\
+          <div class="story-thumbnail" style="background-image: url(' + this.thumbnail + ');"></div>\
+          <p class="story-title">' + this.title + '</p>\
+        </a>';
+      });
+
+      related = related + '</div></div>';
+    }
+    var footer = $('<div class="slide-footer slide-item">\
+        <div class="footer-content">' + slide.content + related + '</div>\
+      </div>');
     if ($('.slide-item').length < 1){
       $('#map').after(footer);
       footer.css({

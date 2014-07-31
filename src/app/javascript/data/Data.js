@@ -114,7 +114,24 @@ define(['lib/leaflet/dist/leaflet'],function(){
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       }
-    }]
+    }],
+
+    footer: {
+      content: '<p>For more information on farmer’s markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. Farmer\'s market managers can also find additional information about updating USDA\'s directory with their market.</p>',
+      relatedStories: [{
+        title: 'Feeding the World',
+        url: 'http://storymaps.esri.com/stories/feedingtheworld/',
+        thumbnail: 'http://www.arcgis.com/sharing/content/items/5c6188dd18654760ae59a6822a0a67f0/info/thumbnail/feeding.png'
+      },{
+        title: 'Zoo Babies',
+        url: 'http://storymaps.esri.com/stories/2014/zoo-babies/',
+        thumbnail: 'http://www.arcgis.com/sharing/content/items/6a213c9015604f80b47f8718debce911/info/thumbnail/Zoo.png'
+      },{
+        title: 'Twister Dashboard',
+        url: 'http://storymaps.esri.com/stories/2014/tornadoes/',
+        thumbnail: 'http://www.arcgis.com/sharing/rest/content/items/bf071b4bd72147108ddad032a7fdc092/info/thumbnail/Twist.png'
+      }]
+    }
 
   };
 
