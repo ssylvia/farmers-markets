@@ -44,9 +44,23 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
           break;
         case 'esriFeatureLayer':
           layer = L.esri.featureLayer(layerObj.url,layerObj.layerOptions);
-          if (layerObj.popupTemplate){
+          if (layerObj.name === 'FarmersMarkets'){
             layer.bindPopup(function (feature) {
-              return L.Util.template(layerObj.popupTemplate, feature.properties);
+              var prop = feature.properties;
+              var popupStr = '<h3>' + prop.marketname + '</h3><hr />';
+              if (prop.state && prop.city){
+                popupStr = popupStr + '<p>' + prop.city +', ' + prop.state + '</p>';
+              }
+              else if (prop.state){
+                popupStr = popupStr + '<p>' + prop.state + '</p>';
+              }
+              else if (prop.city){
+                popupStr = popupStr + '<p>' + prop.city + '</p>';
+              }
+              if (prop.website){
+                popupStr = popupStr + '<a href="' + prop.website + '" target="blank">Check us out!</a>';
+              }
+              return popupStr;
             });
           }
           break;

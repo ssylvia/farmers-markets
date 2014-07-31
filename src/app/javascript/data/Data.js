@@ -30,7 +30,6 @@ define([],function(){
         name: 'FarmersMarkets',
         type: 'esriFeatureLayer',
         url: 'http://services.arcgis.com/nzS0F0zdNLvs7nc8/arcgis/rest/services/Farmers_Markets_update/FeatureServer/0',
-        popupTemplate: '<h3>{marketname}</h3>',
         scaleDependent: {
           minZoom: 8,
         },
@@ -78,6 +77,13 @@ define([],function(){
             selector: '#geocoder-wrapper'
           }
         }]
+      }
+    },{
+      title: 'Text about exploring',
+      content: 'blah blah blah... click on a point for more info!',
+      layers: {
+        basemaps: ['Gray','GrayLabels'],
+        operational: ['FarmersMarketsTiles','FarmersMarkets']
       }
     },{
       title: 'Access by car to farmer\'s markets',
