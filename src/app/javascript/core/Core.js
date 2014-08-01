@@ -31,6 +31,10 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
       if (code === 13){
         _map.geocodeAddress($(this));
       }
+    }).click(function(){
+      if ($(this).val() === 'Search for a valid U.S. location'){
+        $(this).val('');
+      }
     });
 
     $('#search-button').click(function(){

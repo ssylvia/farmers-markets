@@ -8,7 +8,8 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
         zoom: 5,
         maxBounds: null,
         zoomControl: false,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        keyboard: false
       }
     },options),
     layers = [],
@@ -48,17 +49,17 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
             layer.bindPopup(function (feature) {
               var prop = feature.properties;
               var popupStr = '<h3>' + prop.marketname + '</h3><hr />';
-              if (prop.state && prop.city){
+              if (prop.state.length > 1 && prop.city.length > 1){
                 popupStr = popupStr + '<p>' + prop.city +', ' + prop.state + '</p>';
               }
-              else if (prop.state){
+              else if (prop.state.length > 1){
                 popupStr = popupStr + '<p>' + prop.state + '</p>';
               }
-              else if (prop.city){
+              else if (prop.city.length > 1){
                 popupStr = popupStr + '<p>' + prop.city + '</p>';
               }
-              if (prop.website){
-                popupStr = popupStr + '<a href="' + prop.website + '" target="blank">Check us out!</a>';
+              if (prop.website.length > 1){
+                popupStr = popupStr + '<a href="' + prop.website + '" target="_blank">Check us out!</a>';
               }
               return popupStr;
             });
@@ -130,7 +131,7 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
           $(self).trigger('geocodeAddressEnd',true);
         }
         else{
-          input.val('Search for a valid location in the United States');
+          input.val('Search for a valid U.S. location');
           $(self).trigger('geocodeAddressEnd',false);
         }
       });

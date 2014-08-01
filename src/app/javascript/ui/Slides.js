@@ -61,14 +61,8 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     $(window).on('keydown',function(event){
       var code = event.keyCode || event.which;
       switch(code){
-        case 37:
-          prevSlide(self);
-          break;
         case 38:
           prevSlide(self);
-          break;
-        case 39:
-          nextSlide(self);
           break;
         case 40:
           nextSlide(self);
@@ -150,7 +144,7 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
       related = related + '</div></div>';
     }
     var footer = $('<div class="slide-footer slide-item">\
-        <div class="footer-content">' + slide.content + related + '</div>\
+        <div class="footer-content">' + slide.content + related + '<div class="back-to-top-wrapper"><div class="back-to-top-button">Back To Top</div></div></div>\
       </div>');
     if ($('.slide-item').length < 1){
       $('#map').after(footer);
@@ -161,6 +155,11 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     else{
       $('.slide-item').last().after(footer);
     }
+
+    $('.back-to-top-button').click(function(){
+      self.setCurrentIndex(0);
+      scrollToPosition(self,0);
+    });
   }
 
   function nextSlide(self){

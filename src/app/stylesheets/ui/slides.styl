@@ -18,6 +18,9 @@
 
 .slide-title-wrapper, .slide-content-wrapper
 
+  .slide-main-title
+    margin-top 25px
+
   .slide-title, .slide-content
     position relative
     padding 25px
@@ -35,12 +38,11 @@
   .background
     background-color $mainAccent
 
-.slide-main-content-wrapper{
+.slide-main-content-wrapper
   margin-bottom 117px
   color $secondaryAccent
   text-align: center
   width 80%
-}
 
 .slide-footer
   position absolute
@@ -91,6 +93,22 @@
   background-repeat no-repeat
   background-position center
   z-index 5
+
+.back-to-top-wrapper
+  text-align center
+  margin-bottom 25px
+
+  .back-to-top-button
+    background-color $topButton
+    color $secondaryAccent
+    padding 10px
+    border-radius 10px
+    margin auto
+    width 200px
+    cursor pointer
+
+  .back-to-top-button:hover
+    background-color $topButtonHover
 
 .next-arrow
   position fixed

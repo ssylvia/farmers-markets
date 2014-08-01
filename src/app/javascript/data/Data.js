@@ -39,10 +39,10 @@ define(['lib/leaflet/dist/leaflet'],function(){
               alt: feature.properties.marketname,
               riseOnHover: true,
               icon: L.icon({
-                iconUrl: 'resources/images/mapIcons/farmers-markets.png',
-                iconRetinaUrl: 'resources/images/mapIcons/farmers-markets-2x.png',
-                iconSize: [33, 60],
-                iconAnchor: [16, 54],
+                iconUrl: 'resources/images/mapIcons/fm.png',
+                iconRetinaUrl: 'resources/images/mapIcons/fm-2x.png',
+                iconSize: [33, 53],
+                iconAnchor: [16, 45],
                 popupAnchor: [0, -45],
               })
             });
@@ -61,12 +61,12 @@ define(['lib/leaflet/dist/leaflet'],function(){
 
     slides: [{
       mainTitle: true,
-      title: 'Farmer\'s Markets: Americans continue to discover and celebrate fresh, locally-grown foods.',
-      content: 'Farmer\'s markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmer\'s market phenomenon and discover markets in your community.',
+      title: 'The Rapid Rise of Farmers\' Markets',
+      content: 'Farmers\' markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmers\' market phenomenon and discover markets in your community.',
       backgroundImage: 'resources/images/slideContent/backgrounds/market.jpeg'
     },{
-      title: 'A bumper crop of farmer\'s markets',
-      content: 'The National Farmer\'s Market Directory lists more than 8,000 markets, an increase of 76 percent since 1978. California hosts the most farmer’s markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
+      title: 'A bumper crop of farmers\' markets',
+      content: 'The National Farmers\' Market Directory lists more than 8,000 markets, an increase of 76 percent since 1978. California hosts the most farmer’s markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
@@ -94,22 +94,22 @@ define(['lib/leaflet/dist/leaflet'],function(){
         }]
       }
     },{
-      title: 'Text about exploring',
-      content: 'blah blah blah... click on a point for more info!',
+      title: 'Markets in your area',
+      content: 'Click on market symbols for more information. Most include links to market websites. Zoom out if no markets are visible.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       }
     },{
-      title: 'Access by car to farmer\'s markets',
-      content: 'The shaded areas are within a fifteen-minute drive of a farmer\'s market. Is your home convenient to a market?',
+      title: 'Access by car to farmers\' markets',
+      content: 'The shaded areas are within a fifteen-minute drive of a farmers\' market. Is your home convenient to a market?',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       }
     },{
-      title: 'Walking to farmer\'s markets',
-      content: 'The shaded areas are within a ten-minute walk of a farmer\'s market. Access to markets may be more difficult for residents of less affluent neighborhoods.',
+      title: 'Walking to farmers\' markets',
+      content: 'The shaded areas are within a ten-minute walk of a farmers\' market. Access to markets may be more difficult for residents of less affluent neighborhoods.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
@@ -117,7 +117,7 @@ define(['lib/leaflet/dist/leaflet'],function(){
     }],
 
     footer: {
-      content: '<p>For more information on farmer’s markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. Farmer\'s market managers can also find additional information about updating USDA\'s directory with their market.</p>',
+      content: '<p>For more information on farmer’s markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. The USDA website includes instructions for farmers\' market managers who would like to add their market to the directory.</p>',
       relatedStories: [{
         title: 'Feeding the World',
         url: 'http://storymaps.esri.com/stories/feedingtheworld/',
