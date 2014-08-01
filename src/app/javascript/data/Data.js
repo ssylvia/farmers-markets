@@ -39,10 +39,10 @@ define(['lib/leaflet/dist/leaflet'],function(){
               alt: feature.properties.marketname,
               riseOnHover: true,
               icon: L.icon({
-                iconUrl: 'resources/images/mapIcons/fm.png',
-                iconRetinaUrl: 'resources/images/mapIcons/fm-2x.png',
-                iconSize: [33, 53],
-                iconAnchor: [16, 45],
+                iconUrl: 'resources/images/mapIcons/farmers-markets.png',
+                iconRetinaUrl: 'resources/images/mapIcons/farmers-markets-2x.png',
+                iconSize: [33, 60],
+                iconAnchor: [16, 54],
                 popupAnchor: [0, -45],
               })
             });
@@ -66,7 +66,7 @@ define(['lib/leaflet/dist/leaflet'],function(){
       backgroundImage: 'resources/images/slideContent/backgrounds/market.jpeg'
     },{
       title: 'A bumper crop of farmers\' markets',
-      content: 'The National Farmers\' Market Directory lists more than 8,000 markets, an increase of 76 percent since 1978. California hosts the most farmer’s markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
+      content: 'The National Farmers\' Market Directory lists more than 8,000 markets, an increase of 76 percent since 2008. California hosts the most farmer’s markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
