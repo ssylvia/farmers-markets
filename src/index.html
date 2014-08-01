@@ -2,27 +2,52 @@
 <html>
 	<head lang="en">
 
-		<title>Farmer's Markets | An Esri Story Map</title>
+		<title>The Rapid Rise of Farmers' Markets | An Esri Story Map</title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-	    <meta name="apple-mobile-web-app-capable" content="yes">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	    <link type="image/ico" rel="shortcut icon" href="//resources.esri.com/favicon.ico">
-	    <link type="image/ico" rel="icon" href="//resources.esri.com/favicon.ico">
-	    <meta name="author" content="Esri">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link type="image/ico" rel="shortcut icon" href="//resources.esri.com/favicon.ico">
+    <link type="image/ico" rel="icon" href="//resources.esri.com/favicon.ico">
+    <meta name="keywords" content="Farmers' Markets, Story Map">
+    <meta name="description" content="Farmers' markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmers' market phenomenon and discover markets in your community.">
 
-      <script type="text/javascript" src="//use.typekit.net/yfa4zwo.js"></script>
-      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	    <!-- build:css:deploy app/stylesheets/app.min.css -->
-	    <link href="app/stylesheets/app.css" media="screen" rel="stylesheet" type="text/css">
+    <!--Facebook Open Graph-->
+    <meta property="og:title" content="The Rapid Rise of Farmers' Markets">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://storymaps.esri.com/stories/2014/farmers-markets">
+    <meta property="og:image" content="http://storymaps.esri.com/stories/2014/farmers-markets/resources/images/thumbnail.png">
+    <meta property="og:site_name" content="Esri">
+    <meta property="og:description" content="Farmers' markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmers' market phenomenon and discover markets in your community.">
+    <meta property="fb:app_id" content="475867552452282" />
+    <!--End Facebook-->
+
+    <!--Twitter Card Data-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@EsriStoryMaps">
+    <meta name="twitter:url" content="http://storymaps.esri.com/stories/2014/farmers-markets">
+    <meta name="twitter:title" content="The Rapid Rise of Farmers' Markets">
+    <meta name="twitter:description" content="SFarmers' markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmers' market phenomenon and discover markets in your community..">
+    <meta name="twitter:image" content="http://storymaps.esri.com/stories/2014/farmers-markets/resources/images/thumbnail.png">
+    <!--End Twitter-->
+
+    <script type="text/javascript" src="//use.typekit.net/yfa4zwo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!-- build:css:deploy app/stylesheets/app.min.css -->
+    <link href="app/stylesheets/app.css" media="screen" rel="stylesheet" type="text/css">
 		<!-- /build -->
 
     <!--[if lt IE 9]>
-    <script type="text/javascript">window.location = "http://browsehappy.com/"</script>
+    <script type="text/javascript">
+      alert('This app requires a modern browsers to run properly. Please update then visit this page again.');\
+      window.location = "http://browsehappy.com/";\
+    </script>
     <![endif]-->
 	</head>
 	<body>
+
+    <div class="loader"><div id="spinner" class="load-indicator icon-spin animate-spin"></div></div>
 
     <div id="geocoder-wrapper">
       <div class="geocoder-form">
@@ -55,6 +80,12 @@
           },
           'lib/esri-leaflet-geocoder/dist/esri-leaflet-geocoder': {
             deps: ['lib/esri-leaflet/dist/esri-leaflet']
+          },
+          'lib/jquery.finger/dist/jquery.finger.min': {
+            deps: ['jquery']
+          },
+          'lib/waitForImages/dist/jquery.waitForImages.min': {
+            deps: ['jquery']
           }
         }
 			});
@@ -75,11 +106,36 @@
           },
           'lib/esri-leaflet/dist/esri-leaflet': {
             deps: ['lib/leaflet/dist/leaflet']
+          },
+          'lib/esri-leaflet-geocoder/dist/esri-leaflet-geocoder': {
+            deps: ['lib/esri-leaflet/dist/esri-leaflet']
+          },
+          'lib/jquery.finger/dist/jquery.finger.min': {
+            deps: ['jquery']
+          },
+          'lib/waitForImages/dist/jquery.waitForImages.min': {
+            deps: ['jquery']
           }
         }
 			});
 			require(["app/javascript/app.min.js"]);
 		</script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26529417-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 		/build -->
+    <!--[if lt IE 10]>
+    <script type="text/javascript">
+      var el = document.getElementById('spinner');
+      el.className = 'load-indicator';
+      el.innerHTML = '<img src="resources/images/ajax-loader.gif" alt="">'
+    </script>
+    <![endif]-->
 	</body>
 </html>

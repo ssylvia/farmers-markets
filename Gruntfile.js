@@ -85,6 +85,15 @@ module.exports = function(grunt) {
                       },
                       'lib/esri-leaflet/dist/esri-leaflet': {
                         deps: ['lib/leaflet/dist/leaflet']
+                      },
+                      'lib/esri-leaflet-geocoder/dist/esri-leaflet-geocoder': {
+                        deps: ['lib/esri-leaflet/dist/esri-leaflet']
+                      },
+                      'lib/jquery.finger/dist/jquery.finger.min': {
+                        deps: ['jquery']
+                      },
+                      'lib/waitForImages/dist/jquery.waitForImages.min': {
+                        deps: ['jquery']
                       }
                     },
                     name: 'app/require/buildConfig/core',

@@ -20,6 +20,8 @@
     "jquery-mousewheel": "~3.1.12",
     "Leaflet.heat": "https://github.com/Leaflet/Leaflet.heat.git#gh-pages",
     "esri-leaflet": "https://github.com/Esri/esri-leaflet.git#v0.0.1-beta.5",
-    "esri-leaflet-geocoder": "https://github.com/Esri/esri-leaflet-geocoder.git#v0.0.1-beta.5"
+    "esri-leaflet-geocoder": "https://github.com/Esri/esri-leaflet-geocoder.git#v0.0.1-beta.5",
+    "jquery.finger": "~0.1.0",
+    "waitForImages": "~1.4.2"
   }
 }

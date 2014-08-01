@@ -1,9 +1,10 @@
-define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],function($,Data){
+define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewheel/jquery.mousewheel','lib/jquery.finger/dist/jquery.finger.min','lib/waitForImages/dist/jquery.waitForImages.min'],function($,Data,Social){
 
   var _titleBuffer = 100,
   _animationTime = 500,
   _changeReady = true,
   _scollReady = true,
+  _scrollEnabled = false,
   _scrollDelay,
   _fireChangeEnd;
 
@@ -72,6 +73,17 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
       event.preventDefault();
     });
 
+    $('html').on('flick',function(e){
+      if (e.orientation === 'vertical'){
+        if (e.direction < 0){
+          nextSlide(self);
+        }
+        else{
+          prevSlide(self);
+        }
+      }
+    });
+
     $(window).on('resize',function(){
       setSlidesLayout(self,true);
     });
@@ -82,7 +94,7 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
     var slideTitle,slideContent,slideBackgroundImage;
     if (slide.title){
       if (slide.mainTitle){
-        slideTitle = $('<div class="slide-title-wrapper slide-item"><h1 class="slide-main-title">' + slide.title + '</h1><div class="main-background"></div></div>');
+        slideTitle = $('<div class="slide-title-wrapper slide-item"><h1 class="slide-main-title">' + slide.title + '</h1><span class="social-media"><a class="smLink" href="http://storymaps.arcgis.com/" target="_blank">A story map</a>&nbsp;<span class="social-button social-facebook icon-facebook"></span><span class="social-button social-twitter icon-twitter"></span></span><div class="main-background"></div></div>');
       }
       else{
         slideTitle = $('<div class="slide-title-wrapper slide-item"><h2 class="slide-title">' + slide.title + '</h2><div class="background"></div></div>');
@@ -108,14 +120,26 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
         var nextButton = $('<div class="next-arrow icon-angle-down"></div>');
         $('#map').after(nextButton);
 
-        nextButton.click(function(){
-          nextSlide(self);
-        });
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+          nextButton.on('click',function(){
+            nextSlide(self);
+          });
+        }
+        else{
+          nextButton.on('tap',function(){
+            nextSlide(self);
+          });
+        }
       }
     }
     if (slide.backgroundImage){
       slideBackgroundImage = $('<div class="slide-background-image slide-item" style="background-image:url(' + slide.backgroundImage + ');"></div>');
       $('.slide-item').last().after(slideBackgroundImage);
+
+      slideBackgroundImage.waitForImages(function(){
+        $('.loader').fadeOut();
+        _scrollEnabled = true;
+      });
     }
     var slideObj = {
       slide: slide,
@@ -160,10 +184,12 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
       self.setCurrentIndex(0);
       scrollToPosition(self,0);
     });
+
+    Social.addClickEvents();
   }
 
   function nextSlide(self){
-    if (self.getCurrentIndex() !== self.slides.length){
+    if (self.getCurrentIndex() !== self.slides.length && _scrollEnabled){
       var newIndex = self.getCurrentIndex() + 1;
       self.setCurrentIndex(newIndex);
       scrollToPosition(self,newIndex);
@@ -171,7 +197,7 @@ define(['jquery','app/data/Data','lib/jquery-mousewheel/jquery.mousewheel'],func
   }
 
   function prevSlide(self){
-    if (self.getCurrentIndex() !== 0){
+    if (self.getCurrentIndex() !== 0 && _scrollEnabled){
       var newIndex = self.getCurrentIndex() - 1;
       self.setCurrentIndex(newIndex);
       scrollToPosition(self,newIndex);

@@ -7,6 +7,7 @@ h1
   color $mainAccent
   line-height 1.1em
   text-align center
+  margin-bottom 10px
 
 h2
   font-size 3em
@@ -30,7 +31,22 @@ div
   font-size 1.1em
   line-height 1.3em
 
-@media (max-width: 1000px)
+.social-media
+  font-size 1.2em
+  a,.social-button
+    color $secondaryAccent
+    text-decoration none
+    cursor pointer
+
+  a:hover,.social-button:hover{
+    color #ccc
+  }
+
+.spread-word
+  font-size 1.2em
+  font-weight normal
+
+@media (max-width: 1080px)
 
   h1
    font-size 2.5em

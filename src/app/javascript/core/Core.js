@@ -3,8 +3,6 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
   var _map,
   _slides;
 
-  $(document).bind('touchmove', false);
-
   function createMap(){
     // Create new map object
     _map = new Map('map',{

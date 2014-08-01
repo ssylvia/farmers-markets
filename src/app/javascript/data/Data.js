@@ -117,7 +117,7 @@ define(['lib/leaflet/dist/leaflet'],function(){
     }],
 
     footer: {
-      content: '<p>For more information on farmer’s markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. The USDA website includes instructions for farmers\' market managers who would like to add their market to the directory.</p>',
+      content: '<p>For more information on farmer’s markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. The USDA website includes instructions for farmers\' market managers who would like to add their market to the directory.</p><br><p class="spread-word">Spread the word: <span class="social-media"><span class="social-button social-facebook icon-facebook"></span><span class="social-button social-twitter icon-twitter"></span></span></p>',
       relatedStories: [{
         title: 'Feeding the World',
         url: 'http://storymaps.esri.com/stories/feedingtheworld/',
