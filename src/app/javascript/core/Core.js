@@ -3,6 +3,8 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
   var _map,
   _slides;
 
+  $(document).bind('touchmove', false);
+
   function createMap(){
     // Create new map object
     _map = new Map('map',{
@@ -31,10 +33,6 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
       var code = event.keyCode || event.which;
       if (code === 13){
         _map.geocodeAddress($(this));
-      }
-    }).click(function(){
-      if ($(this).val() === 'Search for a valid U.S. location'){
-        $(this).val('');
       }
     });
 

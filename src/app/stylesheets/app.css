@@ -936,6 +936,16 @@ div {
 }
 
 /* line 42 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#geocoder-wrapper .error-text {
+  display: none;
+  margin-top: 15px;
+  color: #af2926;
+  width: 600px;
+  font-size: 17px;
+  font-weight: normal;
+}
+
+/* line 50 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 #map {
   position: fixed;
   height: 100%;
@@ -943,16 +953,21 @@ div {
   top: 0;
 }
 
-/* line 48 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 56 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+#map.navigation-disabled {
+  cursor: default;
+}
 
-/* line 50 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 59 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+
+/* line 61 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 .leaflet-popup-content-wrapper h3,
 .leaflet-popup-tip h3 {
   font-size: 0.8em;
   font-weight: normal !important;
 }
 
-/* line 54 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 65 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 .leaflet-popup-content-wrapper p,
 .leaflet-popup-tip p,
 .leaflet-popup-content-wrapper a,
@@ -960,20 +975,20 @@ div {
   font-size: 0.7em;
 }
 
-/* line 57 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 68 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 .leaflet-popup-content-wrapper p,
 .leaflet-popup-tip p {
   margin-bottom: 0;
 }
 
-/* line 60 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 71 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 a[style] {
   display: none;
 }
 
-/* line 62 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
+/* line 73 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/map.styl */
 
-/* line 62 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
+/* line 73 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 
 /* line 1 : /Users/step6692/development/github/farmers-markets/src/app/stylesheets/ui/slides.styl */
 .slide-title-wrapper {

@@ -39,11 +39,22 @@
   #search-button:hover
     background-color $topButtonHover
 
+  .error-text
+    display none
+    margin-top 15px
+    color #af2926
+    width: 600px
+    font-size: 17px
+    font-weight: normal
+
 #map
   position fixed
   height 100%
   width 100%
   top 0
+
+#map.navigation-disabled
+  cursor default
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip
 

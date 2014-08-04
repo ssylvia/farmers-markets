@@ -91,20 +91,35 @@ define(['lib/leaflet/dist/leaflet'],function(){
       mainTitle: true,
       title: 'The Rapid Rise of Farmers\' Markets',
       content: 'Farmers\' markets have more than quadrupled in number since the U.S. Department of Agriculture began keeping records in 1994. Scroll down to explore the farmers\' market phenomenon and discover markets in your community.',
-      backgroundImage: 'resources/images/slideContent/backgrounds/market.jpeg'
+      backgroundImage: 'resources/images/slideContent/backgrounds/market.jpeg',
+      tasks: {
+        mapTasks: [{
+          type: 'setBounds',
+          data: {
+            bounds: {
+              southWest:[25,-125],
+              northEast: [51,-66]
+            }
+          }
+        }]
+      }
     },{
       title: 'A bumper crop of farmers\' markets',
-      content: 'The National Farmers\' Market Directory lists more than 8,000 markets, an increase of 76 percent since 2008. California hosts the most farmer’s markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
+      content: 'The National Farmers\' Market Directory lists more than 8,000 markets, an increase of 76 percent since 2008. California hosts the most farmers\' markets, with New York not far behind. Market numbers are on the rise in all regions of the U.S., with the largest increase in the South.',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       },
       tasks: {
         mapTasks: [{
-          type: 'centerAndZoom',
+          type: 'disableMapNavigation'
+        },{
+          type: 'setBounds',
           data: {
-            center: [37.64, -97.11],
-            zoom: 5
+            bounds: {
+              southWest:[25,-125],
+              northEast: [51,-66]
+            }
           }
         }]
       }
@@ -115,6 +130,8 @@ define(['lib/leaflet/dist/leaflet'],function(){
       },
       tasks: {
         mapTasks: [{
+          type: 'enableMapNavigation'
+        },{
           type: 'showItem',
           data: {
             selector: '#geocoder-wrapper'
@@ -130,14 +147,14 @@ define(['lib/leaflet/dist/leaflet'],function(){
       }
     },{
       title: 'Access by car to farmers\' markets',
-      content: 'Blue shades on the map denote areas that are within a 15 minute drive of a farmers\' market. The darker the blue, the more markets that are within a 15 minute drive. In large cities, some residents are within a 15-minute drive of more than 60 markets. Currently, 96.2% of the nation\'s driving population is within a 15 minute drive of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/drive.png" alt="Drive time legend" />',
+      content: 'Blue shades on the map denote areas that are within a 15 minute drive of a farmers\' market. The darker the blue, the more markets that are within a quarter-hour drive. In large cities, some residents are within a 15-minute drive of more than 60 markets. Currently, 78% of the nation\'s driving population is within a 15 minute drive of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/drive.png" alt="Drive time legend" />',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets','DriveTime']
       }
     },{
       title: 'Walking to farmers\' markets',
-      content: 'Green areas indicate a walking time of 10 minutes. The darker the green, the more markets are accessible by a convenient walk. Currently, 4.5% of the nations population is within a 10 minute walking distance to one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/walk.png" alt="Walk time legend" />',
+      content: 'Green areas indicate a walking time of 10 minutes. The darker the green, the more markets are accessible by a convenient walk. Currently, 4.5% of the nation\'s population is within a 10-minute walking distance of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/walk.png" alt="Walk time legend" />',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets','WalkTime']

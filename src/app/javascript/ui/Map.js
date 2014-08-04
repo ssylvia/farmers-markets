@@ -16,14 +16,17 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
     currentLayers;
 
     if (settings.mapOptions.maxBounds){
-      settings.mapOptions.maxBounds = getMaxBounds(settings.mapOptions.maxBounds);
+      settings.mapOptions.maxBounds = getBounds(settings.mapOptions.maxBounds);
     }
 
     // Set Icon Directory
     L.Icon.Default.imagePath = 'resources/images/mapIcons';
 
     var map = L.map(div,settings.mapOptions),
-    labelsLayer;
+    labelsLayer,
+    mapNavigation = true;
+
+    window.mapper = map;
 
     var zoomControl = new L.control.zoom({position: 'topright'});
     zoomControl.addTo(map);
@@ -115,12 +118,38 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
           var self = this;
           switch (this.type){
             case 'centerAndZoom':
-                map.setView(self.data.center,self.data.zoom);
+              map.setView(self.data.center,self.data.zoom);
+              break;
+            case 'setBounds':
+              map.fitBounds(getBounds(self.data.bounds));
               break;
             case 'showItem':
                 $(self.data.selector).fadeIn();
               break;
-
+            case 'disableMapNavigation':
+              if (mapNavigation){
+                mapNavigation = false;
+                map.dragging.disable();
+                map.touchZoom.disable();
+                map.doubleClickZoom.disable();
+                map.boxZoom.disable();
+                map.keyboard.disable();
+                $('.leaflet-control-zoom').hide();
+                $('#map').addClass('navigation-disabled');
+              }
+              break;
+            case 'enableMapNavigation':
+              if (!mapNavigation){
+                mapNavigation = true;
+                map.dragging.enable();
+                map.touchZoom.enable();
+                map.doubleClickZoom.enable();
+                map.boxZoom.enable();
+                map.keyboard.enable();
+                $('.leaflet-control-zoom').show();
+                $('#map').removeClass('navigation-disabled');
+              }
+              break;
           }
         });
       }
@@ -134,11 +163,12 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
 
       geocoder.geocode(input.val(), {}, function (error, results) {
         if(!error && results.length > 0 && settings.mapOptions.maxBounds.contains(results[0].bounds)){
+          $('#geocoder-wrapper .error-text').hide();
           map.fitBounds(results[0].bounds);
           $(self).trigger('geocodeAddressEnd',true);
         }
         else{
-          input.val('Search for a valid U.S. location');
+          $('#geocoder-wrapper .error-text').show();
           $(self).trigger('geocodeAddressEnd',false);
         }
       });
@@ -165,21 +195,23 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
   }
 
   function toggleZoomDependentLayers(map,labelsLayer,currentLayers){
-    $.each(currentLayers,function(){
-      if (!map.hasLayer(this) && checkScaleDependency(map,this)){
-        map.addLayer(this);
+    if(currentLayers){
+      $.each(currentLayers,function(){
+        if (!map.hasLayer(this) && checkScaleDependency(map,this)){
+          map.addLayer(this);
+        }
+        else if (map.hasLayer(this) && !checkScaleDependency(map,this)){
+          map.removeLayer(this);
+        }
+        $('a[style]:eq(0)').show();
+      });
+      if (map.hasLayer(labelsLayer)){
+        labelsLayer.bringToFront();
       }
-      else if (map.hasLayer(this) && !checkScaleDependency(map,this)){
-        map.removeLayer(this);
-      }
-      $('a[style]:eq(0)').show();
-    });
-    if (map.hasLayer(labelsLayer)){
-      labelsLayer.bringToFront();
     }
   }
 
-  function getMaxBounds(maxBounds){
+  function getBounds(maxBounds){
     if (maxBounds && maxBounds.southWest && maxBounds.northEast){
       return L.latLngBounds(maxBounds.southWest,maxBounds.northEast);
     }

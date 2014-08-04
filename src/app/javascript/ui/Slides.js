@@ -62,10 +62,16 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
     $(window).on('keydown',function(event){
       var code = event.keyCode || event.which;
       switch(code){
-        case 38:
+        case 38: /* Up Arrow */
           prevSlide(self);
           break;
-        case 40:
+        case 40: /* Down Arrow */
+          nextSlide(self);
+          break;
+        case 33: /* Page Up */
+          prevSlide(self);
+          break;
+        case 34: /* Page Down */
           nextSlide(self);
           break;
         default: return;
@@ -207,8 +213,10 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
   function scrollToPosition(self,index,fromResize){
     var delay = fromResize ? 0 : _animationTime;
     var scrollPosition;
-    _changeReady = false;
-    onChangeStart(self);
+    if (!fromResize){
+      _changeReady = false;
+      onChangeStart(self);
+    }
     if (self.slides.length === index){
       $('.next-arrow').fadeOut(_animationTime);
       scrollPosition = ($(this).height() * (index - 1)) + $('.slide-footer').outerHeight();
@@ -220,8 +228,10 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
     $('html,body').animate({'scrollTop':scrollPosition},{
       duration: delay,
       complete: function(){
-        _changeReady = true;
-        onChangeEnd(self);
+        if (!fromResize){
+          _changeReady = true;
+          onChangeEnd(self);
+        }
       }
     });
   }
