@@ -22,13 +22,14 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
     // Set Icon Directory
     L.Icon.Default.imagePath = 'resources/images/mapIcons';
 
-    var map = L.map(div,settings.mapOptions);
+    var map = L.map(div,settings.mapOptions),
+    labelsLayer;
 
     var zoomControl = new L.control.zoom({position: 'topright'});
     zoomControl.addTo(map);
 
     map.on('zoomend',function(){
-      toggleZoomDependentLayers(map,currentLayers);
+      toggleZoomDependentLayers(map,labelsLayer,currentLayers);
     });
 
     this.createLayers = function(layerObj,firstLoad){
@@ -39,9 +40,12 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
           layer = L.esri.basemapLayer(layerObj.name,{
             detectRetina: layerObj.displayRetina
           });
+          if (layerObj.name === 'GrayLabels'){
+            labelsLayer = layer;
+          }
           break;
         case 'esriTileLayer':
-          layer = L.esri.tiledMapLayer(layerObj.url);
+          layer = L.esri.tiledMapLayer(layerObj.url,layerObj.layerOptions);
           break;
         case 'esriFeatureLayer':
           layer = L.esri.featureLayer(layerObj.url,layerObj.layerOptions);
@@ -95,6 +99,9 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
               }
             }
           }
+        }
+        if (map.hasLayer(labelsLayer)){
+          labelsLayer.bringToFront();
         }
       }
 
@@ -157,7 +164,7 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
     }
   }
 
-  function toggleZoomDependentLayers(map,currentLayers){
+  function toggleZoomDependentLayers(map,labelsLayer,currentLayers){
     $.each(currentLayers,function(){
       if (!map.hasLayer(this) && checkScaleDependency(map,this)){
         map.addLayer(this);
@@ -167,6 +174,9 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
       }
       $('a[style]:eq(0)').show();
     });
+    if (map.hasLayer(labelsLayer)){
+      labelsLayer.bringToFront();
+    }
   }
 
   function getMaxBounds(maxBounds){

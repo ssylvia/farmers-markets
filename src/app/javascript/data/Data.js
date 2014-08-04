@@ -10,6 +10,7 @@ define(['lib/leaflet/dist/leaflet'],function(){
       center: [37.64, -97.11],
       zoom: 5,
       minZoom: 3,
+      maxZoom: 16,
       maxBounds: {
         southWest:[10,-188],
         northEast: [75,-20]
@@ -55,6 +56,33 @@ define(['lib/leaflet/dist/leaflet'],function(){
         scaleDependent: {
           minZoom: 2,
           maxZoom: 7
+        }
+      },{
+        name: 'DriveTime',
+        type: 'esriTileLayer',
+        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/driving_v3/MapServer/',
+        layerOptions: {
+          opacity: 0.6,
+          maxNativeZoom: 12,
+          maxZoom: 16
+        },
+        scaleDependent: {
+          minZoom: 8,
+          maxNativeZoom: 12,
+          maxZoom: 16
+        }
+      },{
+        name: 'WalkTime',
+        type: 'esriTileLayer',
+        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/walking_v1/MapServer/',
+        layerOptions: {
+          opacity: 0.6,
+          maxNativeZoom: 12,
+          maxZoom: 16
+        },
+        scaleDependent: {
+          minZoom: 8,
+          maxZoom: 16
         }
       }]
     },
@@ -102,22 +130,22 @@ define(['lib/leaflet/dist/leaflet'],function(){
       }
     },{
       title: 'Access by car to farmers\' markets',
-      content: 'The shaded areas are within a fifteen-minute drive of a farmers\' market. Is your home convenient to a market?',
+      content: 'Blue shades on the map denote areas that are within a 15 minute drive of a farmers\' market. The darker the blue, the more markets that are within a 15 minute drive. In large cities, some residents are within a 15-minute drive of more than 60 markets. Currently, 96.2% of the nation\'s driving population is within a 15 minute drive of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/drive.png" alt="Drive time legend" />',
       layers: {
         basemaps: ['Gray','GrayLabels'],
-        operational: ['FarmersMarketsTiles','FarmersMarkets']
+        operational: ['FarmersMarketsTiles','FarmersMarkets','DriveTime']
       }
     },{
       title: 'Walking to farmers\' markets',
-      content: 'The shaded areas are within a ten-minute walk of a farmers\' market. Access to markets may be more difficult for residents of less affluent neighborhoods.',
+      content: 'Green areas indicate a walking time of 10 minutes. The darker the green, the more markets are accessible by a convenient walk. Currently, 4.5% of the nations population is within a 10 minute walking distance to one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/walk.png" alt="Walk time legend" />',
       layers: {
         basemaps: ['Gray','GrayLabels'],
-        operational: ['FarmersMarketsTiles','FarmersMarkets']
+        operational: ['FarmersMarketsTiles','FarmersMarkets','WalkTime']
       }
     }],
 
     footer: {
-      content: '<p>For more information on farmer’s markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. The USDA website includes instructions for farmers\' market managers who would like to add their market to the directory.</p><br><p class="spread-word">Spread the word: <span class="social-media"><span class="social-button social-facebook icon-facebook"></span><span class="social-button social-twitter icon-twitter"></span></span></p>',
+      content: '<p>For more information on farmers\' markets, visit <a href="http://farmersmarkets.usda.gov" target="_blank">farmersmarkets.usda.gov</a>. If you didn’t see your local market, encourage your community organizer to contribute to the national directory.</p><br><br /><p class="spread-word">Spread the word: <span class="social-media"><span class="social-button social-facebook icon-facebook"></span><span class="social-button social-twitter icon-twitter"></span></span></p>',
       relatedStories: [{
         title: 'Feeding the World',
         url: 'http://storymaps.esri.com/stories/feedingtheworld/',

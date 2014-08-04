@@ -11,6 +11,7 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
         zoom: Data.mapConfig.zoom,
         maxBounds: Data.mapConfig.maxBounds,
         minZoom: Data.mapConfig.minZoom,
+        maxZoom: Data.mapConfig.maxZoom,
       }
     });
 
