@@ -30,6 +30,11 @@
     img
       max-width 100%
 
+    .content-warning
+      display none;
+      color $error
+      font-weight normal
+
   .background
     position absolute
     padding 25px
@@ -38,6 +43,18 @@
     height 100%
     background-color $secondaryAccent
     opacity 0.7
+
+.show-content-warning
+
+  .slide-content
+
+    .content-warning
+      display block
+
+    .main-content
+      display none
+
+
 
 .slide-title-wrapper
   .background

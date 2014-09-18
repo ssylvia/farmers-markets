@@ -60,7 +60,7 @@ define(['lib/leaflet/dist/leaflet'],function(){
       },{
         name: 'DriveTime',
         type: 'esriTileLayer',
-        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/driving_v3/MapServer/',
+        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/driving_v4/MapServer/',
         layerOptions: {
           opacity: 0.6,
           maxNativeZoom: 12,
@@ -74,9 +74,9 @@ define(['lib/leaflet/dist/leaflet'],function(){
       },{
         name: 'WalkTime',
         type: 'esriTileLayer',
-        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/walking_v1/MapServer/',
+        url: 'http://staging.storymaps.esri.com/arcgis/rest/services/FarmersMarkets/walking_v9/MapServer/',
         layerOptions: {
-          opacity: 0.6,
+          opacity: 0.75,
           maxNativeZoom: 12,
           maxZoom: 16
         },
@@ -140,21 +140,21 @@ define(['lib/leaflet/dist/leaflet'],function(){
       }
     },{
       title: 'Markets in your area',
-      content: 'Click on market symbols for more information. Most include links to market websites. Zoom out if no markets are visible.',
+      content: '<div class="content-warning">Information about local farmers\' markets cannot be displayed at this scale. Please zoom in to explore more.</div><div class="main-content">Click on market symbols for more information. Most include links to market websites. Zoom out if no markets are visible.</div>',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets']
       }
     },{
       title: 'Access by car to farmers\' markets',
-      content: 'Blue shades on the map denote areas that are within a 15 minute drive of a farmers\' market. The darker the blue, the more markets that are within a quarter-hour drive. In large cities, some residents are within a 15-minute drive of more than 60 markets. Currently, 78% of the nation\'s driving population is within a 15 minute drive of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/drive.png" alt="Drive time legend" />',
+      content: '<div class="content-warning">Driving times to local farmers\' markets cannot be displayed at this scale. Please zoom in to explore more.</div><div class="main-content">Blue shades on the map denote areas that are within a 15 minute drive of a farmers\' market. The darker the blue, the more markets that are within a quarter-hour drive. In large cities, some residents are within a 15-minute drive of more than 60 markets. Currently, 78% of the nation\'s driving population is within a 15 minute drive of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/drive.png" alt="Drive time legend" /></div>',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets','DriveTime']
       }
     },{
       title: 'Walking to farmers\' markets',
-      content: 'Green areas indicate a walking time of 10 minutes. The darker the green, the more markets are accessible by a convenient walk. Currently, 4.5% of the nation\'s population is within a 10-minute walking distance of one or more farmers\' markets.<br /><br /><img src="resources/images/slideContent/walk.png" alt="Walk time legend" />',
+      content: '<div class="content-warning">Walking times to local farmers\' markets cannot be displayed at this scale. Please zoom in to explore more.</div><div class="main-content">Green areas indicate a walking time of 10 minutes. The darker the green, the more markets are accessible by a convenient walk. Currently, 4.5% of the nation\'s population is within a 10-minute walking distance of one or more farmers\' markets. These 10-minute walk areas can be small and you may need to zoom in to see them.<br /><br /><img src="resources/images/slideContent/walk.png" alt="Walk time legend" /></div>',
       layers: {
         basemaps: ['Gray','GrayLabels'],
         operational: ['FarmersMarketsTiles','FarmersMarkets','WalkTime']

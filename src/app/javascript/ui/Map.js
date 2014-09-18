@@ -26,13 +26,17 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
     labelsLayer,
     mapNavigation = true;
 
-    window.mapper = map;
-
     var zoomControl = new L.control.zoom({position: 'topright'});
     zoomControl.addTo(map);
 
     map.on('zoomend',function(){
       toggleZoomDependentLayers(map,labelsLayer,currentLayers);
+      if (map.getZoom() < 8){
+        $('body').addClass('show-content-warning');
+      }
+      else{
+        $('body').removeClass('show-content-warning');
+      }
     });
 
     this.createLayers = function(layerObj,firstLoad){
@@ -133,7 +137,6 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
                 map.touchZoom.disable();
                 map.doubleClickZoom.disable();
                 map.boxZoom.disable();
-                map.keyboard.disable();
                 $('.leaflet-control-zoom').hide();
                 $('#map').addClass('navigation-disabled');
               }
@@ -145,7 +148,6 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
                 map.touchZoom.enable();
                 map.doubleClickZoom.enable();
                 map.boxZoom.enable();
-                map.keyboard.enable();
                 $('.leaflet-control-zoom').show();
                 $('#map').removeClass('navigation-disabled');
               }
@@ -163,12 +165,12 @@ define(['jquery','app/data/Data','lib/leaflet/dist/leaflet','lib/esri-leaflet/di
 
       geocoder.geocode(input.val(), {}, function (error, results) {
         if(!error && results.length > 0 && settings.mapOptions.maxBounds.contains(results[0].bounds)){
-          $('#geocoder-wrapper .error-text').hide();
+          $('#geocoder-wrapper .location-error').hide();
           map.fitBounds(results[0].bounds);
           $(self).trigger('geocodeAddressEnd',true);
         }
         else{
-          $('#geocoder-wrapper .error-text').show();
+          $('#geocoder-wrapper .location-error').show();
           $(self).trigger('geocodeAddressEnd',false);
         }
       });

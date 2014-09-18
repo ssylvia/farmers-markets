@@ -39,7 +39,7 @@ define(['jquery'],
 
   			window.open(
   				'http://www.facebook.com/sharer.php?s=100' + facebookOptions,
-  				'Facebook sharing',
+  				'',
   				'toolbar=0,status=0,width=626,height=436'
   			);
   		}

@@ -12,7 +12,8 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
 
     var self = this,
     prevIndex = 0,
-    currentIndex = 0;
+    currentIndex = 0,
+    searchedForMarket = false;
 
     this.slides = [];
     _animationTime = Data.defaults.animationTime;
@@ -32,6 +33,14 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
 
     this.goToNext = function(){
       nextSlide(self);
+    };
+
+    this.setSearchedForMarket = function(val){
+      searchedForMarket = val;
+    };
+
+    this.getSearchedForMarket = function(val){
+      return searchedForMarket;
     };
 
     $.each(Data.slides,function(i){
@@ -195,7 +204,8 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
   }
 
   function nextSlide(self){
-    if (self.getCurrentIndex() !== self.slides.length && _scrollEnabled){
+    var index = self.getCurrentIndex();
+    if (self.getCurrentIndex() !== self.slides.length && _scrollEnabled && checkContinueState(self,index)){
       var newIndex = self.getCurrentIndex() + 1;
       self.setCurrentIndex(newIndex);
       scrollToPosition(self,newIndex);
@@ -207,6 +217,22 @@ define(['jquery','app/data/Data','app/utils/SocialSharing','lib/jquery-mousewhee
       var newIndex = self.getCurrentIndex() - 1;
       self.setCurrentIndex(newIndex);
       scrollToPosition(self,newIndex);
+    }
+  }
+
+  function checkContinueState(self,index){
+    if(index === 2){
+      if (self.getSearchedForMarket()){
+        $('.zoom-error').hide();
+        return true;
+      }
+      else{
+        $('.zoom-error').show();
+        return false;
+      }
+    }
+    else{
+      return true;
     }
   }
 

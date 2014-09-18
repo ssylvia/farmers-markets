@@ -46,6 +46,7 @@ define(['jquery','app/data/Data','app/ui/Map','app/ui/Slides'],function($,Data,M
 
     $(_map).on('geocodeAddressEnd',function(event,success){
       if (success){
+        _slides.setSearchedForMarket(true);
         $('#geocoder-wrapper').fadeOut();
         if (_slides.getCurrentIndex() === 2){
           _slides.goToNext();
